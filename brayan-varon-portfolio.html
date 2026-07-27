@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brayan Varón — Real Estate Virtual Assistant | Portfolio Report</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #10161D;
+    --surface: #1A2330;
+    --surface-2: #212C3B;
+    --accent: #C9A227;
+    --accent-soft: rgba(201,162,39,0.15);
+    --text: #EDEFF3;
+    --text-muted: #8D97A6;
+    --positive: #6FCF97;
+    --border: rgba(255,255,255,0.08);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter', sans-serif;
+    line-height:1.5;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--accent);
+  }
+  h1, h2, .num{
+    font-family:'Fraunces', serif;
+  }
+  a{color:inherit;}
+  .wrap{max-width:1040px; margin:0 auto; padding:0 24px;}
+
+  /* Header */
+  header{
+    border-bottom:1px solid var(--border);
+    padding:20px 0;
+  }
+  .header-row{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;
+  }
+  .brand{display:flex; align-items:center; gap:12px;}
+  .monogram{
+    width:40px; height:40px; border:1px solid var(--accent); border-radius:4px;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces', serif; font-weight:600; color:var(--accent); font-size:1.1rem;
+  }
+  .brand-name{font-size:0.95rem; font-weight:600;}
+  .brand-title{font-family:'IBM Plex Mono', monospace; font-size:0.68rem; color:var(--text-muted);}
+  .clocks{display:flex; gap:20px; font-family:'IBM Plex Mono', monospace;}
+  .clock{text-align:center;}
+  .clock-tz{font-size:0.62rem; color:var(--text-muted); letter-spacing:0.08em;}
+  .clock-time{font-size:0.95rem; color:var(--positive);}
+
+  /* Hero */
+  .hero{padding:72px 0 56px; border-bottom:1px solid var(--border);}
+  .hero h1{
+    font-size:clamp(1.8rem, 4vw, 2.9rem);
+    font-weight:600;
+    line-height:1.15;
+    margin:14px 0 18px;
+    max-width:780px;
+  }
+  .hero p.sub{
+    max-width:600px; color:var(--text-muted); font-size:1.05rem; margin-bottom:32px;
+  }
+  .cta-row{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.8rem;
+    letter-spacing:0.04em;
+    padding:13px 22px;
+    border-radius:3px;
+    text-decoration:none;
+    display:inline-block;
+    transition:transform 0.15s ease, background 0.15s ease;
+  }
+  .btn-primary{background:var(--accent); color:#10161D; font-weight:500;}
+  .btn-secondary{border:1px solid var(--border); color:var(--text);}
+  .btn:hover{transform:translateY(-2px);}
+  .btn:focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
+
+  /* Section shared */
+  section{padding:56px 0; border-bottom:1px solid var(--border);}
+  .section-head{margin-bottom:32px;}
+  .section-head h2{font-size:1.5rem; font-weight:600; margin-top:8px;}
+
+  /* Stats grid */
+  .stats-grid{
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(190px, 1fr)); gap:16px;
+  }
+  .stat-card{
+    background:var(--surface); border:1px solid var(--border); border-radius:6px; padding:22px;
+  }
+  .stat-card .num{font-size:2.1rem; font-weight:600; color:var(--accent);}
+  .stat-card .label{font-size:0.85rem; color:var(--text-muted); margin-top:6px;}
+
+  /* Systems badges */
+  .badge-grid{display:flex; flex-wrap:wrap; gap:10px;}
+  .badge{
+    font-family:'IBM Plex Mono', monospace; font-size:0.78rem;
+    background:var(--surface-2); border:1px solid var(--border);
+    padding:8px 14px; border-radius:20px; color:var(--text);
+  }
+
+  /* Experience cards (listing style) */
+  .listing{
+    background:var(--surface); border:1px solid var(--border); border-radius:6px;
+    padding:26px; margin-bottom:18px;
+  }
+  .listing.flagship{border-color:var(--accent);}
+  .listing-top{
+    display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:8px;
+    margin-bottom:6px;
+  }
+  .listing-role{font-size:1.1rem; font-weight:600;}
+  .listing-dates{font-family:'IBM Plex Mono', monospace; font-size:0.75rem; color:var(--text-muted);}
+  .listing-employer{color:var(--accent); font-size:0.9rem; margin-bottom:14px;}
+  .listing ul{padding-left:20px; color:var(--text-muted); font-size:0.92rem;}
+  .listing li{margin-bottom:6px;}
+  .status-tag{
+    font-family:'IBM Plex Mono', monospace; font-size:0.65rem; letter-spacing:0.06em;
+    background:var(--accent-soft); color:var(--accent); padding:3px 8px; border-radius:3px;
+    text-transform:uppercase;
+  }
+
+  /* Languages */
+  .lang-row{display:flex; align-items:center; gap:16px; margin-bottom:14px;}
+  .lang-name{width:110px; font-size:0.9rem; flex-shrink:0;}
+  .lang-bar-track{flex:1; height:6px; background:var(--surface-2); border-radius:3px; overflow:hidden;}
+  .lang-bar-fill{height:100%; background:var(--accent); border-radius:3px;}
+  .lang-level{width:150px; font-family:'IBM Plex Mono', monospace; font-size:0.72rem; color:var(--text-muted); text-align:right;}
+
+  /* Footer / contact */
+  footer{padding:60px 0 50px;}
+  .contact-card{
+    background:var(--surface); border:1px solid var(--accent); border-radius:8px;
+    padding:36px; text-align:center;
+  }
+  .contact-card h2{font-size:1.6rem; margin-bottom:10px;}
+  .contact-card p{color:var(--text-muted); margin-bottom:24px;}
+  .contact-links{display:flex; gap:14px; justify-content:center; flex-wrap:wrap;}
+
+  @media (max-width:600px){
+    .clocks{display:none;}
+    .listing-top{flex-direction:column; align-items:flex-start;}
+  }
+
+  @media (prefers-reduced-motion: no-preference){
+    .fade-in{animation:fadeIn 0.6s ease both;}
+  }
+  @keyframes fadeIn{from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:translateY(0);}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-row">
+    <div class="brand">
+      <div class="monogram">BV</div>
+      <div>
+        <div class="brand-name">Brayan Varón</div>
+        <div class="brand-title">REAL ESTATE VIRTUAL ASSISTANT</div>
+      </div>
+    </div>
+    <div class="clocks" id="clocks">
+      <div class="clock"><div class="clock-tz">EST</div><div class="clock-time" id="clock-est">--:--</div></div>
+      <div class="clock"><div class="clock-tz">CST</div><div class="clock-time" id="clock-cst">--:--</div></div>
+      <div class="clock"><div class="clock-tz">PST</div><div class="clock-time" id="clock-pst">--:--</div></div>
+    </div>
+  </div>
+</header>
+
+<section class="hero fade-in">
+  <div class="wrap">
+    <div class="eyebrow">Portfolio Report — Prepared for Hiring Teams</div>
+    <h1>Remote support for property portfolios that can't afford dropped balls.</h1>
+    <p class="sub">10+ years running the admin behind U.S. real estate and remote operations — leasing coordination, owner &amp; asset reporting, executive support — in English and Spanish. Available immediately, full-time or part-time.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="mailto:brian901290@gmail.com?subject=Real%20Estate%20VA%20Role%20-%20Interview">Schedule a call</a>
+      <a class="btn btn-secondary" href="https://linkedin.com/in/brayanvaron-ops" target="_blank" rel="noopener">Connect on LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<section class="fade-in">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">As Reported to Property Owners</div>
+      <h2>Performance on record</h2>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card"><div class="num">500+</div><div class="label">Residential units supported across a multi-property portfolio</div></div>
+      <div class="stat-card"><div class="num">100%</div><div class="label">Same-day documentation accuracy — zero audit exceptions in 14 months</div></div>
+      <div class="stat-card"><div class="num">3,000+</div><div class="label">CRM records maintained with zero integrity issues over 5 years</div></div>
+      <div class="stat-card"><div class="num">35%</div><div class="label">Cut in owner-report prep time through Excel automation</div></div>
+      <div class="stat-card"><div class="num">40–70</div><div class="label">Resident contacts handled weekly for lease renewal follow-ups</div></div>
+      <div class="stat-card"><div class="num">10+</div><div class="label">Years of bilingual remote administrative &amp; operations experience</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="fade-in">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Systems on Record</div>
+      <h2>Tools I already work in</h2>
+    </div>
+    <div class="badge-grid">
+      <span class="badge">ResMan</span>
+      <span class="badge">AppFolio</span>
+      <span class="badge">Elise AI</span>
+      <span class="badge">Vero Screening</span>
+      <span class="badge">Emburse Spend</span>
+      <span class="badge">Notion</span>
+      <span class="badge">ClickUp</span>
+      <span class="badge">Google Workspace</span>
+      <span class="badge">Excel (macros)</span>
+      <span class="badge">Zoom</span>
+      <span class="badge">MS Teams</span>
+    </div>
+  </div>
+</section>
+
+<section class="fade-in">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Portfolio History</div>
+      <h2>Where the numbers above come from</h2>
+    </div>
+
+    <div class="listing flagship">
+      <div class="listing-top">
+        <div class="listing-role">Senior Regional Support Specialist <span class="status-tag">Flagship account</span></div>
+        <div class="listing-dates">Dec 2024 – May 2026</div>
+      </div>
+      <div class="listing-employer">Indio Management · Dallas, TX (Remote)</div>
+      <ul>
+        <li>Main point of contact for leasing and asset teams on a 500+ unit portfolio.</li>
+        <li>Managed executive calendars, travel, and Emburse Spend expense processing across multiple time zones.</li>
+        <li>Built weekly KPI reports (traffic, delinquency, renewals) used directly in owner meetings.</li>
+        <li>100% same-day accuracy on resident documentation audits in ResMan and Vero Screening.</li>
+      </ul>
+    </div>
+
+    <div class="listing">
+      <div class="listing-top">
+        <div class="listing-role">Remote Operations &amp; Data Support Specialist</div>
+        <div class="listing-dates">Apr 2019 – Nov 2024</div>
+      </div>
+      <div class="listing-employer">Riverdale Farms LLC · Bogotá (U.S. Market Focus)</div>
+      <ul>
+        <li>Ran full order lifecycle for 50+ daily U.S. purchase orders at 99%+ accuracy.</li>
+        <li>Designed a billing validation workflow that cut order reprocessing by ~30%.</li>
+      </ul>
+    </div>
+
+    <div class="listing">
+      <div class="listing-top">
+        <div class="listing-role">Logistics Coordinator &amp; Bilingual Commercial Advisor</div>
+        <div class="listing-dates">Apr 2014 – May 2018</div>
+      </div>
+      <div class="listing-employer">Globalrose.com LLC · Bogotá</div>
+      <ul>
+        <li>Built Excel macros that reduced manual shipment tracking time by ~40%.</li>
+        <li>Managed 100+ daily outbound international shipments via FedEx and UPS.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="fade-in">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Availability</div>
+      <h2>Languages &amp; hours</h2>
+    </div>
+    <div class="lang-row">
+      <div class="lang-name">English</div>
+      <div class="lang-bar-track"><div class="lang-bar-fill" style="width:92%"></div></div>
+      <div class="lang-level">Advanced / Near-native</div>
+    </div>
+    <div class="lang-row">
+      <div class="lang-name">Spanish</div>
+      <div class="lang-bar-track"><div class="lang-bar-fill" style="width:100%"></div></div>
+      <div class="lang-level">Native</div>
+    </div>
+    <div class="lang-row">
+      <div class="lang-name">French</div>
+      <div class="lang-bar-track"><div class="lang-bar-fill" style="width:45%"></div></div>
+      <div class="lang-level">Intermediate</div>
+    </div>
+    <div class="lang-row">
+      <div class="lang-name">German</div>
+      <div class="lang-bar-track"><div class="lang-bar-fill" style="width:20%"></div></div>
+      <div class="lang-level">Basic</div>
+    </div>
+    <p style="margin-top:18px; color:var(--text-muted); font-size:0.9rem;">Available immediately · Full-time or part-time · Business hours across EST / CST / PST</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="contact-card">
+      <div class="eyebrow">Ready when you are</div>
+      <h2>Let's schedule a tour of my experience</h2>
+      <p>Bogotá, Colombia · Available for immediate start</p>
+      <div class="contact-links">
+        <a class="btn btn-primary" href="mailto:brian901290@gmail.com">brian901290@gmail.com</a>
+        <a class="btn btn-secondary" href="tel:+573195910059">+57 319 591 0059</a>
+        <a class="btn btn-secondary" href="https://linkedin.com/in/brayanvaron-ops" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function updateClocks(){
+    const opts = { hour:'2-digit', minute:'2-digit', hour12:false };
+    document.getElementById('clock-est').textContent = new Intl.DateTimeFormat('en-US', {...opts, timeZone:'America/New_York'}).format(new Date());
+    document.getElementById('clock-cst').textContent = new Intl.DateTimeFormat('en-US', {...opts, timeZone:'America/Chicago'}).format(new Date());
+    document.getElementById('clock-pst').textContent = new Intl.DateTimeFormat('en-US', {...opts, timeZone:'America/Los_Angeles'}).format(new Date());
+  }
+  updateClocks();
+  setInterval(updateClocks, 1000 * 30);
+</script>
+
+</body>
+</html>
